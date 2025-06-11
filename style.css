@@ -1,0 +1,45 @@
+body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+}
+
+.custom-card {
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e5e7eb;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.x-input:focus,
+.y-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px #93c5fd;
+    outline: none;
+}
+
+#add-row,
+#calculate {
+    transition: background 0.2s, transform 0.2s;
+}
+
+#add-row:hover {
+    background: #2563eb;
+    transform: translateY(-2px) scale(1.03);
+}
+
+#calculate:hover {
+    background: #059669;
+    transform: translateY(-2px) scale(1.03);
+}
+
+#results {
+    background: #f3f4f6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+@media (max-width: 640px) {
+    #chart {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
