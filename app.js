@@ -15,7 +15,9 @@ addRowBtn.addEventListener('click', () => {
   yInput.className = 'y-input border rounded p-2';
   container.appendChild(xInput);
   container.appendChild(yInput);
+  bindAutoUpdate(); // ✅ importante para que calcule al escribir
 });
+
 
 function mean(arr) {
   return arr.reduce((a, b) => a + b, 0) / arr.length;
@@ -37,7 +39,6 @@ calculateBtn.addEventListener('click', () => {
   }
 
   if (X.length < 2) {
-    alert('Por favor, ingresa al menos dos pares de datos válidos con Y > 0.');
     return;
   }
 
@@ -75,7 +76,7 @@ resultsDiv.innerHTML = `
         <h2 class="text-xl font-bold mb-2 text-gray-800">Resultados:</h2>
         <div class="mb-3">
             <span class="font-semibold text-gray-700">Ecuación:</span>
-            <span class="font-mono text-blue-700">Y = ${a.toFixed(4)} × e<sup>(${b.toFixed(4)}·X)</sup></span>
+            <span class="font-mono text-blue-700">Ŷ = ${a.toFixed(4)} × e<sup>(${b.toFixed(4)}·X)</sup></span>
         </div>
         <div class="grid grid-cols-2 gap-2 mb-4">
             <div><span class="font-semibold text-gray-700">R²:</span> <span class="text-green-700">${r2.toFixed(4)} -> ${(r2*100).toFixed(2)}%</span></div>
@@ -85,7 +86,7 @@ resultsDiv.innerHTML = `
         </div>
         <h3 class="font-semibold mt-4 mb-2 text-gray-800">Proyección de datos:</h3>
         <ul class="list-disc ml-8 space-y-1 text-gray-700">
-            ${X.map((x, i) => `<li><span class="font-mono">X = ${x}</span>, <span class="font-mono">Y predicho ≈ ${Yhat[i].toFixed(4)}</span></li>`).join('')}
+            ${X.map((x, i) => `<li><span class="font-mono">X = ${x}</span>, <span class="font-mono">Ŷ = ${Yhat[i].toFixed(4)}</span></li>`).join('')}
         </ul>
     </div>
 `;
@@ -143,20 +144,6 @@ function bindAutoUpdate() {
   });
 }
 
-// Actualiza eventos cada vez que se agregue una nueva fila
-addRowBtn.addEventListener('click', () => {
-  const xInput = document.createElement('input');
-  const yInput = document.createElement('input');
-  xInput.type = yInput.type = 'number';
-  xInput.step = yInput.step = 'any';
-  xInput.placeholder = 'X';
-  yInput.placeholder = 'Y';
-  xInput.className = 'x-input border rounded p-2';
-  yInput.className = 'y-input border rounded p-2';
-  container.appendChild(xInput);
-  container.appendChild(yInput);
-  bindAutoUpdate(); // Nuevo binding cada vez que se agregan inputs
-});
 
 // Inicializa el binding al cargar la página
 bindAutoUpdate();
