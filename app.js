@@ -1,4 +1,5 @@
 const addRowBtn = document.getElementById('add-row');
+const deleteRowBtn = document.getElementById('remove-row');
 const container = document.getElementById('input-container');
 const calculateBtn = document.getElementById('calculate');
 const resultsDiv = document.getElementById('results');
@@ -15,9 +16,17 @@ addRowBtn.addEventListener('click', () => {
   yInput.className = 'y-input border rounded p-2';
   container.appendChild(xInput);
   container.appendChild(yInput);
-  bindAutoUpdate(); // ✅ importante para que calcule al escribir
+  bindAutoUpdate(); 
 });
 
+deleteRowBtn.addEventListener('click', () => {
+    const inputs = document.querySelectorAll('.x-input, .y-input');
+    if (inputs.length > 2) { // Mantiene al menos dos filas
+        inputs[inputs.length - 1].remove();
+        inputs[inputs.length - 2].remove();
+        autoCalculate(); // Vuelve a recalcular después de eliminar una fila
+    }
+});
 
 function mean(arr) {
   return arr.reduce((a, b) => a + b, 0) / arr.length;
@@ -32,6 +41,12 @@ calculateBtn.addEventListener('click', () => {
   for (let i = 0; i < xInputs.length; i++) {
     const xVal = parseFloat(xInputs[i].value);
     const yVal = parseFloat(yInputs[i].value);
+    if (
+      xInputs[i].value.trim() === '' ||
+      yInputs[i].value.trim() === ''
+    ) {
+      continue;
+    }
     if (!isNaN(xVal) && !isNaN(yVal) && yVal > 0) {
       X.push(xVal);
       Y.push(yVal);
