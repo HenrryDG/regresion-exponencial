@@ -7,40 +7,50 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center px-4 py-10 font-sans">
+<body class="bg-gradient-to-br from-blue-100 via-white to-purple-100 min-h-screen flex flex-col items-center px-4 py-10 font-sans">
+
+  <!-- Encabezado -->
+  <header class="mb-8 text-center">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-blue-800 tracking-tight mb-2 drop-shadow">ESTADÍSTICA COMPUTACIONAL - GRUPO A</h1>
+    <ul class="flex flex-wrap justify-center gap-4 text-lg text-gray-700 font-medium">
+      <li class="bg-blue-50 px-3 py-1 rounded-full shadow">Gabriel Ariñez Álvarez</li>
+      <li class="bg-blue-50 px-3 py-1 rounded-full shadow">Henrry Gutiérrez Ariñez</li>
+      <li class="bg-blue-50 px-3 py-1 rounded-full shadow">María José Salinas Parra</li>
+    </ul>
+  </header>
 
   <!-- Contenedor Principal -->
-  <div class="w-full max-w-6xl bg-white rounded-2xl shadow-lg p-6 md:p-10 flex flex-col md:flex-row gap-10">
-
+  <div class="w-full max-w-6xl bg-white/90 backdrop-blur rounded-3xl shadow-2xl p-6 md:p-10 flex flex-col md:flex-row gap-10 border border-blue-100">
     <!-- Columna Izquierda -->
-    <div class="flex-1">
-      <h1 class="text-4xl font-bold text-blue-700 text-center mb-6">Regresión Exponencial</h1>
+    <div class="flex-1 flex flex-col justify-center">
+      <h2 class="text-4xl font-bold text-blue-700 text-center mb-6">Regresión Exponencial</h2>
 
       <div class="space-y-4">
         <p class="text-gray-700 text-lg font-medium">Introduce pares de datos <span class="text-blue-600 font-semibold">(X, Y)</span>:</p>
 
         <div id="input-container" class="grid grid-cols-2 gap-4">
-          <input type="number" step="any" placeholder="X" class="x-input p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
-          <input type="number" step="any" placeholder="Y" class="y-input p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          <input type="number" step="any" placeholder="X" class="x-input p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 transition" />
+          <input type="number" step="any" placeholder="Y" class="y-input p-3 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 transition" />
         </div>
 
-        <div class="flex flex-wrap items-center gap-4 justify-center">
-          <button id="add-row" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 transition">+ Agregar fila</button>
-        <button id="remove-row" class="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-red-700 transition">- Eliminar fila</button>
-          
-          <button id="calculate" class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-green-700 transition hidden">Calcular</button>
+        <div class="flex flex-wrap items-center gap-4 justify-center mt-2">
+          <button id="add-row" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 hover:scale-105 transition">+ Agregar fila</button>
+          <button id="remove-row" class="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-red-700 hover:scale-105 transition">- Eliminar fila</button>
+          <button id="calculate" class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-green-700 hover:scale-105 transition hidden">Calcular</button>
         </div>
       </div>
     </div>
 
     <!-- Columna Derecha: Gráfico -->
-    <div class="md:w-[600px] w-full">
-      <canvas id="chart" width="600" height="400" class="rounded-xl border border-gray-200 shadow"></canvas>
+    <div class="md:w-[600px] w-full flex items-center justify-center">
+      <div class="bg-white rounded-xl border border-gray-200 shadow-lg p-4 w-full">
+        <canvas id="chart" width="600" height="400" class="rounded-xl"></canvas>
+      </div>
     </div>
   </div>
 
   <!-- Resultados debajo -->
-  <div id="results" class="w-full max-w-6xl mt-8"></div>
+  <div id="results" class="w-full max-w-6xl mt-10"></div>
 
   <script src="app.js"></script>
 </body>
