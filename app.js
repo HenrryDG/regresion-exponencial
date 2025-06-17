@@ -91,7 +91,7 @@ calculateBtn.addEventListener('click', () => {
   const r2 = 1 - (sse / sst);
   const ecm = sse / Y.length;
   const ema = sea / Y.length;
-  const eee = Math.sqrt(ecm/ (Y.length - 2));
+  const eee = Math.sqrt(sse/ (Y.length - 2));
 
   resultsDiv.innerHTML = `
     <div class="bg-gradient-to-br from-white via-blue-50 to-blue-100 shadow-lg rounded-xl p-8 mt-6 border border-blue-200">
