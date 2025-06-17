@@ -84,7 +84,7 @@ calculateBtn.addEventListener('click', () => {
   const r2 = 1 - (sse / sst);
   const ecm = sse / Y.length;
   const ema = sea / Y.length;
-  const eee = Math.sqrt(ecm);
+  const eee = Math.sqrt(ecm/ (Y.length - 2));
 
 resultsDiv.innerHTML = `
     <div class="bg-white shadow-md rounded-lg p-6 mt-4">
